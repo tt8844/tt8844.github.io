@@ -1,0 +1,142 @@
+.layuimini-main-contact {
+    padding: 18px 16px 28px;
+    color: #f7f2e8;
+}
+
+.layuimini-main-contact .title {
+    text-align: center;
+    color: #f7f2e8;
+    line-height: 24px;
+    padding: 14px 16px;
+    border: 1px solid rgba(229, 183, 120, 0.16);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at top left, rgba(229, 183, 120, 0.12), transparent 36%),
+        linear-gradient(180deg, rgba(31, 35, 49, 0.96) 0%, rgba(20, 22, 32, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 22px 44px rgba(7, 8, 12, 0.24);
+}
+
+.layuimini-main-contact .title a {
+    color: #e5b778;
+    font-weight: 700;
+}
+
+.layuimini-main-contact .body {
+    text-align: center;
+    width: min(100%, 340px);
+    margin: 0 auto;
+}
+
+.layuimini-main-contact .body > div:first-child {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 22px 0 12px;
+    color: #fff7ea;
+}
+
+.layuimini-main-contact .body > button {
+    width: 230px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 23px;
+    color: #f7f2e8;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 24px rgba(7, 8, 12, 0.12);
+}
+
+.layuimini-main-contact .body > button:last-child {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.layuimini-main-contact .body > button.select {
+    background: linear-gradient(135deg, #e5b778, #f0ca94);
+    color: #171922;
+    border-color: rgba(229, 183, 120, 0.32);
+    box-shadow: 0 14px 30px rgba(229, 183, 120, 0.2);
+}
+
+.layuimini-main-contact .body .content {
+    margin-top: 20px;
+}
+
+.layuimini-main-contact .body .content .mainland {
+    display: block;
+}
+
+.layuimini-main-contact .body .content .oveas {
+    display: none;
+}
+
+.layuimini-main-contact .scene-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff7ea;
+}
+
+.layuimini-main-contact .body .content .mainland ul li {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(circle at top left, rgba(229, 183, 120, 0.08), transparent 36%),
+        rgba(255, 255, 255, 0.03);
+    padding: 14px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 14px 28px rgba(6, 7, 10, 0.14);
+}
+
+.layuimini-main-contact .body .content .mainland ul li > div:first-child {
+    flex: 1;
+    text-align: left;
+}
+
+.layuimini-main-contact .body .content .mainland ul li > div:last-child {
+    margin-top: 0;
+    margin-left: 12px;
+    color: #e5b778;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.layuimini-main-contact .body .content .mainland ul li > div > div:first-child {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff5df;
+}
+
+.layuimini-main-contact .body .content .mainland ul li > div > div:last-child {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #b8b2a5;
+}
+
+.layuimini-main-contact .body .content .mainland ul li span,
+.layuimini-main-contact .download-tip span {
+    color: #e5b778;
+    font-weight: 700;
+}
+
+.layuimini-main-contact .download-btn {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #171922;
+    width: 230px;
+    height: 45px;
+    background: linear-gradient(135deg, #e5b778, #f0ca94);
+    text-align: center;
+    border-radius: 23px;
+    border: none;
+    box-shadow: 0 14px 30px rgba(229, 183, 120, 0.2);
+}
+
+.layuimini-main-contact .download-tip {
+    font-size: 14px;
+    line-height: 22px;
+    color: #b8b2a5;
+}
