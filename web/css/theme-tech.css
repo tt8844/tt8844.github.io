@@ -1,0 +1,294 @@
+:root {
+    --sd-bg: #1c1e28;
+    --sd-bg-soft: #242735;
+    --sd-panel: rgba(33, 36, 49, 0.92);
+    --sd-panel-soft: rgba(39, 43, 58, 0.82);
+    --sd-border: rgba(229, 183, 120, 0.18);
+    --sd-border-strong: rgba(229, 183, 120, 0.3);
+    --sd-text: #f7f2e8;
+    --sd-muted: #b8b2a5;
+    --sd-accent: #e5b778;
+    --sd-accent-deep: #c89443;
+    --sd-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+}
+
+html,
+body {
+    background:
+        radial-gradient(circle at top left, rgba(229, 183, 120, 0.14), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(86, 120, 255, 0.12), transparent 22%),
+        linear-gradient(180deg, #171922 0%, #1c1e28 100%) !important;
+    color: var(--sd-text);
+}
+
+body,
+button,
+input,
+select,
+textarea,
+a {
+    color: var(--sd-text);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(circle at center, black 42%, transparent 92%);
+    pointer-events: none;
+}
+
+.layui-layout-admin .layui-body,
+.layui-layout-admin .footer,
+.layuimini-container,
+.layuimini-page-anim,
+.mescroll,
+.layui-container {
+    background-color: transparent !important;
+}
+
+.index-header,
+.layui-header.header,
+.layui-layout-admin .footer,
+.layui-layout-admin .footer .nav,
+.layui-nav-tree,
+.layui-side-scroll,
+.layuimini-tool i {
+    background: linear-gradient(180deg, rgba(29, 31, 42, 0.96), rgba(23, 25, 34, 0.98)) !important;
+}
+
+.layui-layout-admin .footer,
+.index-header {
+    border-top: 1px solid var(--sd-border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.layui-nav .layui-nav-item,
+.layui-nav .layui-nav-item a,
+.layui-layout-admin .footer .nav,
+.layui-layout-admin .footer div:last-child,
+.layuimini-tool i {
+    color: var(--sd-muted) !important;
+}
+
+.layui-nav .layui-this a,
+.layui-nav .layui-this i,
+.layui-nav .layui-nav-item a:hover,
+.layui-layout-admin .footer .nav .select,
+.layui-layout-admin .footer .nav span:hover,
+.footer button:hover,
+.forgot-password:hover {
+    color: var(--sd-accent) !important;
+}
+
+.layui-nav-bar,
+.layui-tab-brief > .layui-tab-title .layui-this:after,
+.layuimini-main-feedback-list .layui-tab-brief > .layui-tab-title .layui-this:after {
+    border-bottom-color: var(--sd-accent) !important;
+}
+
+.layui-body .layuimini-content-page > *,
+.layuimini-main-user .top,
+.layuimini-main-user .body,
+.layuimini-main-buy .desc,
+.layuimini-main-buy .content,
+.layuimini-main-buy .payment,
+.layuimini-main-feedback > div.title,
+.layuimini-main-feedback-list > div.title,
+.layuimini-main-feedback-list .top,
+.layuimini-main-broadcast .title,
+.layuimini-main-broadcast .content ul li,
+.layuimini-main-contact .body,
+.layuimini-main-help .content,
+.layuimini-main-help .change > div,
+.layuimini-main-guide .body,
+.help .container,
+.broadcast-container,
+.warning-container,
+.login-warning-show .warning-container,
+.layuimini-main-route .top .title,
+.layuimini-main-route .body ul li,
+.layuimini-main-route .show > div,
+.layuimini-main-buy .show > div,
+.layuimini-main-buy .content ul li,
+.layuimini-main-contact .body .content .mainland ul li,
+.layuimini-modify-password .logo-title,
+.layuimini-main-feedback .body .picture {
+    background: #1C1E28 !important;
+}
+
+.layui-collapse,
+.layui-colla-item,
+.layuimini-main-help .step,
+.layuimini-main-guide .body ul li {
+    background: linear-gradient(180deg, rgba(39, 43, 58, 0.86), rgba(28, 30, 40, 0.92)) !important;
+    border-color: var(--sd-border) !important;
+    color: var(--sd-text) !important;
+}
+
+.layui-colla-title,
+.layuimini-main-user .body .title,
+.layuimini-main-buy .content .title,
+.layuimini-main-buy .payment .title,
+.layuimini-main-feedback .body .feedback-type .title,
+.layuimini-main-feedback .body .content .title,
+.layuimini-main-broadcast .title,
+.layuimini-main-contact .title,
+.layuimini-main-help .title,
+.layuimini-main-guide .body ul > div,
+.warning-container .title,
+.broadcast-container .title,
+.login-warning-show .warning-container .title {
+    color: var(--sd-text) !important;
+}
+
+.layuimini-main-buy .desc .common .title,
+.layuimini-main-buy .payment ul li span,
+.layuimini-main-route .body ul li .route-body,
+.layuimini-main-route .show div .title,
+.layuimini-main-route .show div .sign,
+.layuimini-main-buy .show div .title,
+.layuimini-main-buy .show div .desc,
+.layuimini-main-contact .body,
+.layuimini-main-user .top .title div,
+.layuimini-main-user .top .opera,
+.layuimini-main-feedback-list .layui-tab-content .layui-tab-item ul li .time,
+.layuimini-main-broadcast .content ul li div.desc,
+.layuimini-main-broadcast .content ul li div.time,
+.layuimini-main-contact .body .content .mainland ul li > div div:last-child,
+.layuimini-main-help .change > div div:last-child {
+    color: var(--sd-muted) !important;
+}
+
+.layuimini-main-help .title,
+.layuimini-main-contact .title {
+    background: linear-gradient(90deg, rgba(229, 183, 120, 0.18), rgba(229, 183, 120, 0.05)) !important;
+    border: 1px solid var(--sd-border) !important;
+    border-radius: 18px;
+}
+
+.login-form .logo-title h1,
+.layuimini-modify-password .logo-title h1 {
+    color: var(--sd-text) !important;
+}
+
+.box {
+    background: rgba(229, 183, 120, 0.08);
+    border: 1px solid var(--sd-border);
+    color: var(--sd-accent) !important;
+}
+
+.box div,
+.box span,
+.box i {
+    color: inherit !important;
+}
+
+.layui-form input,
+.layui-input,
+.login-form .layui-form-item input,
+.layuimini-modify-password .input,
+.layuimini-main-feedback .body textarea {
+    background: rgba(15, 17, 24, 0.42) !important;
+    color: var(--sd-text) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #8e877a !important;
+}
+
+div.login,
+.layuimini-main-buy .payment .pay,
+.layuimini-main-feedback .body .post,
+.layuimini-main-route .show div .copy,
+.layuimini-main-contact .body > button.select,
+.layuimini-main-buy .top .title .select,
+.layuimini-main-route .top .title .select {
+    background: linear-gradient(135deg, var(--sd-accent), #f0ca94) !important;
+    color: #171922 !important;
+    border: none !important;
+    box-shadow: 0 14px 30px rgba(229, 183, 120, 0.22);
+}
+
+div.login button,
+.layuimini-main-buy .payment .pay span,
+.layuimini-main-feedback .body .post,
+.layuimini-main-route .show div .copy {
+    color: #171922 !important;
+    font-weight: 700;
+}
+
+.layuimini-main-buy .top .title button,
+.layuimini-main-route .top .title button,
+.layuimini-main-feedback > div.title div,
+.layuimini-main-feedback-list .layui-tab-brief > .layui-tab-title .layui-this,
+.layuimini-main-contact .body .content .oveas div span,
+.footer button,
+.forgot-password,
+.login-form .input div.captcha {
+    color: var(--sd-accent) !important;
+}
+
+.login-form .input div.captcha {
+    background: rgba(229, 183, 120, 0.14) !important;
+    border: 1px solid rgba(229, 183, 120, 0.28) !important;
+}
+
+.layuimini-main-feedback .body .feedback-type ul li,
+.layuimini-main-buy .content ul li.selected,
+.layuimini-main-contact .body > button,
+.layuimini-main-route .top .title button,
+.layuimini-main-buy .top .title button,
+.layuimini-main-contact .body .content .mainland ul li {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--sd-text) !important;
+}
+
+.layuimini-main-feedback .body .feedback-type ul li.selected,
+.layuimini-main-contact .body > button.select,
+.layuimini-main-buy .content ul li.selected,
+.layuimini-main-help .change .select {
+    border-color: var(--sd-border-strong) !important;
+    background: rgba(229, 183, 120, 0.12) !important;
+    color: var(--sd-accent) !important;
+}
+
+.layuimini-main-user .body .content button,
+.layuimini-main-user .body .vip-content button,
+.layuimini-modify-password .update,
+.warning-container .toHelp,
+.login-warning-show .toLoginHelp {
+    background: linear-gradient(135deg, var(--sd-accent), #f0ca94) !important;
+    color: #171922 !important;
+    border-radius: 16px !important;
+}
+
+.layuimini-main-user .body .vip-content .left .title span,
+.layuimini-main-user .body .vip-content .left .time,
+.layuimini-main-user .body .vip-content .left .title .font-valid {
+    color: var(--sd-accent) !important;
+}
+
+.layui-layer,
+.layui-layer-page .layui-layer-content,
+.layui-layer-black,
+.layui-layer-black .layui-layer-title,
+.layui-layer-black .layui-layer-btn,
+.layui-layer-black .layui-layer-btn a {
+    background: linear-gradient(180deg, var(--sd-panel), var(--sd-panel-soft)) !important;
+    color: var(--sd-text) !important;
+    border-color: var(--sd-border) !important;
+}
+
+.icon-cp {
+    box-shadow: 0 18px 40px rgba(229, 183, 120, 0.22);
+}

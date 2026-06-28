@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载中心</title>
+    <meta name="apple-mobile-web-app-title" content="黑曜永久链接">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="./image/touch-icon-iphone.png">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body,
+        html {
+            background: #1C1E28;
+            color: #F4ECDD;
+        }
+
+        .container {
+            max-width: 560px;
+            padding: 28px 20px 36px;
+        }
+
+        .content h2 {
+            margin: 8px 0 22px;
+            color: #F8F1E5;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .download-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .download-item {
+            margin: 0;
+            display: contents;
+        }
+
+        .download-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            margin: 0;
+            padding: 20px;
+            border: 1px solid rgba(242, 181, 108, 0.18);
+            border-radius: 24px;
+            background:
+                radial-gradient(circle at top right, rgba(242, 181, 108, 0.12), transparent 34%),
+                linear-gradient(180deg, #252836 0%, #202330 100%);
+            box-shadow: 0 18px 36px rgba(6, 8, 14, 0.36);
+            text-decoration: none;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(242, 181, 108, 0.34);
+            box-shadow: 0 24px 46px rgba(6, 8, 14, 0.48);
+        }
+
+        .download-card__body {
+            min-width: 0;
+            flex: 1;
+            text-align: left;
+        }
+
+        .download-card__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: rgba(236, 207, 153, 0.14);
+            color: #F2D8A7;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .download-card__title {
+            display: block;
+            margin-top: 10px;
+            color: #FFF9F0;
+            font-size: 1.04rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .download-card__meta {
+            display: block;
+            margin-top: 5px;
+            color: #C8C1B3;
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .download-card__cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 46px;
+            padding: 0 16px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ECCF99 0%, #F2B56C 100%);
+            color: #332311;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            box-shadow: 0 12px 24px rgba(242, 181, 108, 0.22);
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                padding: 24px 16px 32px;
+            }
+
+            .download-buttons {
+                gap: 12px;
+            }
+
+            .download-card {
+                padding: 16px;
+                gap: 14px;
+                border-radius: 18px;
+            }
+
+            .download-card__title {
+                font-size: 0.98rem;
+            }
+
+            .download-card__meta {
+                font-size: 0.8rem;
+            }
+
+            .download-card__cta {
+                min-height: 40px;
+                padding: 0 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <section class="content">
+            <h2>请选择您的设备下载</h2>
+            <div class="download-buttons">
+                <div class="download-item">
+                    <a href="#" class="download-card" id="android-download">
+                        <span class="download-card__body">
+                            <span class="download-card__eyebrow" id="android-download-tag">ANDROID</span>
+                            <span class="download-card__title" id="android-download-title">Android</span>
+                            <span class="download-card__meta" id="android-download-meta">安装包下载 | v4.0.0.apk</span>
+                        </span>
+                        <span class="download-card__cta" id="android-download-cta">立即下载</span>
+                    </a>
+                </div>
+                <div class="download-item">
+                    <a href="#" class="download-card" id="ios-appstore-download">
+                        <span class="download-card__body">
+                            <span class="download-card__eyebrow" id="ios-appstore-download-tag">APPSTORE</span>
+                            <span class="download-card__title" id="ios-appstore-download-title">iOS 海外AppStore下载</span>
+                            <span class="download-card__meta" id="ios-appstore-download-meta">海外 Apple ID | 商店下载安装</span>
+                        </span>
+                        <span class="download-card__cta" id="ios-appstore-download-cta">打开</span>
+                    </a>
+                </div>
+                <div class="download-item">
+                    <a href="#" class="download-card" id="ios-web-download">
+                        <span class="download-card__body">
+                            <span class="download-card__eyebrow" id="ios-web-download-tag">IOS WEB</span>
+                            <span class="download-card__title" id="ios-web-download-title">iOS 网页版</span>
+                            <!-- <span class="download-card__meta" id="ios-web-download-meta">建议优选海外 AppStore 下载</span> -->
+                        </span>
+                        <span class="download-card__cta" id="ios-web-download-cta">前往</span>
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <a href="#" class="download-card" id="windows-download">
+                        <span class="download-card__body">
+                            <span class="download-card__eyebrow" id="windows-download-tag">WINDOWS</span>
+                            <span class="download-card__title" id="windows-download-title">Windows</span>
+                            <span class="download-card__meta" id="windows-download-meta">桌面端安装包 | V3.0.0.exe</span>
+                        </span>
+                        <span class="download-card__cta" id="windows-download-cta">立即下载</span>
+                    </a>
+                </div>
+                <div class="download-item">
+                    <a href="#" class="download-card" id="macos-download">
+                        <span class="download-card__body">
+                            <span class="download-card__eyebrow" id="macos-download-tag">MACOS</span>
+                            <span class="download-card__title" id="macos-download-title">macOS</span>
+                            <span class="download-card__meta" id="macos-download-meta">桌面端安装包 | v2.3.0.pkg</span>
+                        </span>
+                        <span class="download-card__cta" id="macos-download-cta">立即下载</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        (function () {
+            var platformTargets = {
+                android: {
+                    url: "https://github.com/heiyao88/heiyao88.github.io/releases/download/heiyao-latest-apk/heiyao-v4.2.0-33.apk",
+                    version: "v4.2.0",
+                    extension: "apk",
+                    label: "Android",
+                    tag: "ANDROID",
+                    metaPrefix: "安装包下载",
+                    action: "立即下载"
+                },
+                windows: {
+                    url: "https://github.com/heiyao88/heiyao88.github.io/releases/download/heiyao-latest-exe/heiyao-v3.2.0-26.exe",
+                    version: "v3.2.0",
+                    extension: "exe",
+                    label: "Windows",
+                    tag: "WINDOWS",
+                    metaPrefix: "桌面端安装包",
+                    action: "立即下载"
+                },
+                macos: {
+                    url: "https://github.com/heiyao88/heiyao88.github.io/releases/download/heiyao-latest-pkg/heiyao-v2.3.1-72.pkg",
+                    version: "v2.3.1",
+                    extension: "pkg",
+                    label: "macOS",
+                    tag: "MACOS",
+                    metaPrefix: "桌面端安装包",
+                    action: "立即下载"
+                },
+                "ios-web": {
+                    url: "web/index.html",
+                    label: "iOS 网页版",
+                    tag: "IOS WEB",
+                   meta: "建议优选海外 AppStore 下载",
+                    action: "前往"
+                },
+                "ios-appstore": {
+                    url: "help/index.html",
+                    label: "iOS 海外AppStore下载",
+                    tag: "APPSTORE",
+                    meta: "海外 Apple ID | 商店下载安装",
+                    action: "打开"
+                },
+            };
+
+            function applyDownloadTarget(elementId, targetKey) {
+                var element = document.getElementById(elementId);
+                var tag = document.getElementById(elementId + "-tag");
+                var title = document.getElementById(elementId + "-title");
+                var meta = document.getElementById(elementId + "-meta");
+                var cta = document.getElementById(elementId + "-cta");
+                var target = platformTargets[targetKey];
+
+                if (!element || !target) {
+                    return;
+                }
+
+                element.href = target.url;
+
+                if (tag && target.tag) {
+                    tag.textContent = target.tag;
+                }
+
+                if (title && target.label) {
+                    title.textContent = target.label;
+                }
+
+                if (meta) {
+                    meta.textContent = target.version
+                        ? target.metaPrefix + " | " + target.version + "." + target.extension
+                        : target.meta;
+                }
+
+                if (cta && target.action) {
+                    cta.textContent = target.action;
+                }
+            }
+
+            applyDownloadTarget("android-download", "android");
+            applyDownloadTarget("ios-web-download", "ios-web");
+            applyDownloadTarget("ios-appstore-download", "ios-appstore");
+            applyDownloadTarget("windows-download", "windows");
+            applyDownloadTarget("macos-download", "macos");
+        })();
+    </script>
+</body>
+</html>

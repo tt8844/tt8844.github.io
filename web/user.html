@@ -1,0 +1,225 @@
+<div class="layuimini-container layuimini-page-anim">
+  <div class="layuimini-main-user">
+    <div class="account-panel">
+      <div class="account-line">
+        <span class="label">账号:</span>
+        <span class="username"></span>
+      </div>
+    </div>
+
+    <div class="membership-panel">
+      <div class="membership-card vip-card" data-plan="vip">
+        <div class="membership-info">
+          <div class="membership-name">VIP会员 </div>
+          <div class="membership-time vip-time"><span></span></div>
+        </div>
+      </div>
+
+      <div class="membership-card svip-card" data-plan="svip">
+        <div class="membership-info">
+          <div class="membership-name">SVIP会员</div>
+          <div class="membership-time svip-time"><span></span></div>
+        </div>
+        <button class="renew-button go-buy" data-plan="svip">立即续费</button>
+      </div>
+    </div>
+
+    <div class="menu-panel">
+      <div class="menu-item modify-password">
+        <div class="menu-left">
+          <i class="fa fa-lock menu-icon"></i>
+          <span>修改密码</span>
+        </div>
+        <i class="fa fa-angle-right menu-arrow"></i>
+      </div>
+
+      <div class="menu-item broadcast">
+        <div class="menu-left">
+          <i class="fa fa-bullhorn menu-icon"></i>
+          <span>公告</span>
+        </div>
+        <i class="fa fa-angle-right menu-arrow"></i>
+      </div>
+
+      <div class="menu-item feedback">
+        <div class="menu-left">
+          <i class="fa fa-commenting-o menu-icon"></i>
+          <span>问题反馈</span>
+        </div>
+        <i class="fa fa-angle-right menu-arrow"></i>
+      </div>
+    </div>
+
+    <div class="logout-panel">
+      <button class="logout-button" type="button">退出登录</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/utils.js" charset="utf-8"></script>
+<script>
+  layui.use(['form', 'table', 'miniPage'], function () {
+    var $ = layui.jquery,
+      form = layui.form,
+      table = layui.table,
+      miniPage = layui.miniPage;
+
+    function goPage(page) {
+      let now = parseInt(new Date().getTime() / 1000);
+      miniPage.hashChange(page + '?ts=' + now);
+    }
+
+    function showSoon(text) {
+      layer.msg(text || '功能即将上线');
+    }
+
+    let request = GetRequestParams(layui.router().href);
+    if (request["channel"] != undefined && request["channel"] != "") {
+      layui.data('channel', { key: "info", value: request["channel"] });
+    }
+
+    var userInfo = layui.data('user').userInfo;
+
+    if (userInfo == undefined || userInfo.username == undefined) {
+      var loadIndex = layer.load(2, {
+        shade: [0.2, '#000000']
+      });
+      getUserInfo(loadIndex);
+      return false;
+    } else {
+      let isReset = false;
+      $(".layuimini-main-user .username").text(userInfo.username);
+      let timestamp = parseInt(new Date().getTime() / 1000);
+      if (timestamp - userInfo.cache_ts > 60) {
+        isReset = true;
+        getUserInfo();
+      }
+
+      if (!isReset) {
+        resetUser(userInfo);
+      }
+    }
+
+    function setCardState(selector, expireTime, timestamp) {
+      const card = $(selector);
+      card.removeClass('is-valid is-expired');
+      if (expireTime > timestamp) {
+        card.addClass('is-valid');
+      } else {
+        card.addClass('is-expired');
+      }
+    }
+
+    function resetUser(userInfo) {
+      let timestamp = parseInt(new Date().getTime() / 1000);
+
+      if (userInfo.vip_expire_time == 0) {
+        userInfo.vip_expire_time = userInfo.created;
+      }
+      if (userInfo.expire_time == 0) {
+        userInfo.expire_time = userInfo.created;
+      }
+
+      $(".layuimini-main-user .username").text(userInfo.username);
+      $(".layuimini-main-user .vip-time span").text("到期: " + dateUnixFormat(userInfo.expire_time));
+      $(".layuimini-main-user .svip-time span").text("到期: " + dateUnixFormat(userInfo.vip_expire_time));
+
+      setCardState(".layuimini-main-user .vip-card", userInfo.expire_time, timestamp);
+      setCardState(".layuimini-main-user .svip-card", userInfo.vip_expire_time, timestamp);
+    }
+
+    function getUserInfo(loadIndex) {
+      axios({
+        "method": "GET",
+        "url": `${API_URL}/user/info`,
+      }).then((json) => {
+        if (loadIndex != undefined) {
+          layer.close(loadIndex);
+        }
+        if (json.code == 200) {
+          let timestamp = parseInt(new Date().getTime() / 1000);
+          json.data.cache_ts = timestamp;
+          layui.data('user', { key: "userInfo", value: json.data });
+          resetUser(json.data);
+        } else if (json.code == 4003) {
+          layer.msg(json.msg, {
+            time: 1000
+          }, function () {
+            layui.data('user', { key: "userInfo", remove: true })
+            window.location = 'login.html';
+          });
+        } else {
+          layer.msg(json.msg);
+        }
+      }, (e) => {
+        if (loadIndex != undefined) {
+          layer.close(loadIndex);
+        }
+        layer.msg(e.errorType);
+      });
+    }
+
+    $(".layuimini-main-user .go-buy").on('click', function () {
+      let isSvip = $(this).data('plan') === 'svip' ? 1 : 0;
+      layui.sessionData('buy_tab', { key: "is_svip", value: isSvip });
+      miniPage.hashChange('buy.html');
+    });
+
+    $(".layuimini-main-user .coupon").on('click', function () {
+      showSoon('优惠券功能即将上线');
+    });
+
+    $(".layuimini-main-user .modify-password").on('click', function () {
+      miniPage.hashChange("update_password.html");
+    });
+
+    $(".layuimini-main-user .broadcast").on('click', function () {
+      goPage('broadcast.html');
+    });
+
+    $(".layuimini-main-user .protect-app").on('click', function () {
+      showSoon('如需防丢失协助，请联系在线客服');
+    });
+
+    $(".layuimini-main-user .settings").on('click', function () {
+      showSoon('设置功能即将上线');
+    });
+
+    $(".layuimini-main-user .faq").on('click', function () {
+      goPage('help.html');
+    });
+
+    $(".layuimini-main-user .feedback").on('click', function () {
+      goPage('feedback.html');
+    });
+
+    $(".layuimini-main-user .logout-button").on('click', function () {
+      try {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('layui_token');
+        localStorage.removeItem('layui_user');
+      } catch (e) {}
+
+      layui.data('token', null);
+      layui.data('user', null);
+      layui.sessionData('route', null);
+
+      layer.msg('已退出登录', {
+        time: 600
+      }, function () {
+        window.location = 'login.html';
+      });
+    });
+
+    $(".layuimini-main-user .about").on('click', function () {
+      goPage('contact.html');
+    });
+
+    $(".layuimini-main-user .business").on('click', function () {
+      goPage('contact.html');
+    });
+
+    form.render();
+  });
+</script>
